@@ -1,0 +1,21 @@
+.container {
+    margin-top: 15px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.07);
+    background-color: rgb(235, 234, 234);
+    padding: 10px;
+}
+
+.add:hover{
+    background-color: rgb(156, 156, 156);
+    padding: none;
+}
+
+mat-divider{
+    width: 90%;
+    border-top: 1px solid;
+}
+
+.add{
+    width: 90%;
+}
