@@ -10,9 +10,18 @@
       class="ms-auto me-auto mt-2 rounded text-secondary"
     ></mat-divider>
   </div>
+  @for (task of tasks; track task) {
+    <div class="row">
+      <div class="col-auto mt-3 ms-auto me-auto add rounded">
+        <button class="unstyled-button w-100" (click)="openAddModal(task)">
+          <i class="fa-regular fa-pen-to-square"></i>{{ task.title }}
+        </button>
+      </div>
+    </div>
+  }
   <div class="row">
     <div class="col-auto mt-3 ms-auto me-auto add rounded">
-      <button class="unstyled-button w-100">
+      <button class="unstyled-button w-100" (click)="openAddModal()">
         <i class="fa-solid fa-circle-plus"></i> Add task
       </button>
     </div>

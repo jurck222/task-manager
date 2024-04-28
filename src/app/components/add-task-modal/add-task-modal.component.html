@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ task().title }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="me-auto ms-auto">
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div>
+      <textarea
+        class="d-block w-75 rounded mt-2 ms-auto me-auto"
+        style="height: 300px; resize: none"
+        [(ngModel)]="markdownContent"
+      ></textarea>
+    </div>
+  </div>
+  <markdown
+    class="d-block w-75 rounded mt-2 ms-auto me-auto"
+    [data]="markdownContent()"
+  ></markdown>
+
+  <button
+    type="button"
+    class="btn btn-outline-primary ms-2 mb-2"
+    (click)="collapse.toggle()"
+    [attr.aria-expanded]="!isCollapsed"
+    aria-controls="collapseExample"
+  >
+    Edit
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-primary ms-2 mb-2"
+    (click)="addTask()"
+  >
+    Save
+  </button>
+</div>
