@@ -1,7 +1,7 @@
 <div class="modal-header">
   @if (!this.editTitle()) {
     <h4 class="modal-title">
-      {{ task().title }}
+      {{ title() }}
       <button
         class="unstyled-button"
         title="edit title"
@@ -11,7 +11,7 @@
       </button>
     </h4>
   } @else {
-    <input type="text" class="input-h4" [(ngModel)]="task().title" />
+    <input type="text" class="input-h4" [(ngModel)]="title" />
     <button
       class="unstyled-button"
       title="edit title"
@@ -33,22 +33,22 @@
       <textarea
         class="d-block w-75 rounded mt-2 ms-auto me-auto"
         style="height: 300px; resize: none"
-        [(ngModel)]="task().desc"
+        [(ngModel)]="markdownContent"
       ></textarea>
     </div>
   </div>
   <markdown
     class="d-block w-75 rounded mt-2 ms-auto me-auto"
-    [data]="task().desc"
+    [data]="markdownContent()"
   ></markdown>
-  @if (task().checklist.length == 0) {
+  @if (taskList().length == 0) {
     <div class="col-auto mt-3 ms-auto rounded text-center">
       <button class="unstyled-button w-100" (click)="addChecklistItem()">
         <i class="fa-solid fa-circle-plus"></i> Add checklist
       </button>
     </div>
   } @else {
-    @for (check of task().checklist; track check) {
+    @for (check of taskList(); track check) {
       <div
         class="text-black text-center d-flex align-items-center justify-content-center pb-1"
       >
@@ -98,7 +98,7 @@
   <button
     type="button"
     class="btn btn-outline-primary ms-2 mb-2"
-    (click)="addTask()"
+    (click)="updateTask()"
   >
     Save
   </button>

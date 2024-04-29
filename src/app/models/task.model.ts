@@ -8,4 +8,10 @@ export interface Task {
 export interface Check {
   value: string;
   completed: boolean;
+  mode: GuiMode;
+}
+
+export enum GuiMode {
+  'edit',
+  'view',
 }

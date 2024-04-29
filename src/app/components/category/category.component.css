@@ -5,10 +5,8 @@
     background-color: rgb(235, 234, 234);
     padding: 10px;
 }
-
 .add:hover{
     background-color: rgb(156, 156, 156);
-    padding: none;
 }
 
 mat-divider{
@@ -16,6 +14,7 @@ mat-divider{
     border-top: 1px solid;
 }
 
-.add{
+.task{
+    background-color: rgb(206, 206, 206);
     width: 90%;
 }

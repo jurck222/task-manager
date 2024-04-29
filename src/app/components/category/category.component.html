@@ -1,5 +1,5 @@
 <div class="container rounded border border-secondary">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col">{{ categoryTitle() }}</div>
     <div class="col-auto me-2">
       <button class="unstyled-button">
@@ -11,18 +11,22 @@
     ></mat-divider>
   </div>
   @for (task of tasks; track task) {
-    <div class="row">
-      <div class="col-auto mt-3 ms-auto me-auto add rounded">
-        <button class="unstyled-button w-100" (click)="openAddModal(task)">
-          <i class="fa-regular fa-pen-to-square"></i>{{ task.title }}
+    <div class="row justify-content-center">
+      <div class="col-auto mt-3 ms-auto me-auto task rounded text-center">
+        <span>{{ task.title }}</span>
+        <button class="unstyled-button ms-1" (click)="openUpdateModal(task)">
+          <i class="fa-regular fa-pen-to-square"></i>
+        </button>
+        <button class="unstyled-button ms-1" (click)="deleteTask(task)">
+          <i class="fa-regular fa-trash-can"></i>
         </button>
       </div>
     </div>
   }
-  <div class="row">
-    <div class="col-auto mt-3 ms-auto me-auto add rounded">
+  <div class="row justify-content-center">
+    <div class="col-auto mt-3 ms-auto me-auto add rounded text-center">
       <button class="unstyled-button w-100" (click)="openAddModal()">
-        <i class="fa-solid fa-circle-plus"></i> Add task
+        <i class="fa-solid fa-circle-plus"></i> Add new task
       </button>
     </div>
   </div>
