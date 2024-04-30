@@ -38,7 +38,7 @@ export class UpdateTaskModalComponent {
           this.title.set(this.task().title);
           this.markdownContent.set(
             this.task().desc ||
-              'The editor supports markdown with live preview so you can engance your task description.',
+              'The editor supports markdown with live preview so you can enhance your task description.',
           );
           this.taskList.set(this.task().checklist);
         }
@@ -53,6 +53,7 @@ export class UpdateTaskModalComponent {
       task.checklist = this.taskList();
       return task;
     });
+    console.log(this.task());
     this.activeModal.close();
   }
 

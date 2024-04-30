@@ -38,7 +38,7 @@
         <textarea
           class="d-block w-75 rounded mt-2 ms-auto me-auto"
           style="height: 300px; resize: none"
-          [(ngModel)]="task().desc"
+          [(ngModel)]="markdownContent"
         ></textarea>
       </ng-template>
     </li>
@@ -47,7 +47,7 @@
       <ng-template ngbNavContent>
         <markdown
           class="d-block w-75 rounded mt-2 ms-auto me-auto"
-          [data]="task().desc"
+          [data]="markdownContent()"
         ></markdown>
       </ng-template>
     </li>

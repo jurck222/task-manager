@@ -26,7 +26,7 @@ export class AddTaskModalComponent {
   initialTask: Task = {
     title: 'New Task',
     checklist: [],
-    desc: 'The editor supports markdown with live preview so you can engance your task description.',
+    desc: 'The editor supports markdown with live preview so you can enhance your task description.',
   };
   task = signal<Task>(this.initialTask);
   editTitle = signal(false);
