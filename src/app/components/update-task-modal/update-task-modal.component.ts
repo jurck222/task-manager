@@ -1,14 +1,24 @@
 import { NgClass } from '@angular/common';
 import { Component, effect, inject, model, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbActiveModal, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbActiveModal,
+  NgbCollapseModule,
+  NgbNavModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
 import { Check, GuiMode, Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-update-task-modal',
   standalone: true,
-  imports: [MarkdownModule, FormsModule, NgbCollapseModule, NgClass],
+  imports: [
+    MarkdownModule,
+    FormsModule,
+    NgbCollapseModule,
+    NgClass,
+    NgbNavModule,
+  ],
   templateUrl: './update-task-modal.component.html',
   styleUrl: './update-task-modal.component.css',
 })
@@ -65,5 +75,12 @@ export class UpdateTaskModalComponent {
 
   changeMode(check: Check) {
     check.mode = check.mode == GuiMode.edit ? GuiMode.view : GuiMode.edit;
+  }
+
+  removeChecklistItem(check: Check) {
+    this.taskList.update((taskList) => {
+      taskList = taskList.filter((item) => item !== check);
+      return taskList;
+    });
   }
 }

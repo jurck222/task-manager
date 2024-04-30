@@ -27,20 +27,33 @@
     (click)="activeModal.dismiss('Cross click')"
   ></button>
 </div>
+<h5 class="ms-3 mt-2"><i class="fa-solid fa-pencil"></i> Description</h5>
 <div class="me-auto ms-auto">
-  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-    <div>
-      <textarea
-        class="d-block w-75 rounded mt-2 ms-auto me-auto"
-        style="height: 300px; resize: none"
-        [(ngModel)]="task().desc"
-      ></textarea>
-    </div>
-  </div>
-  <markdown
-    class="d-block w-75 rounded mt-2 ms-auto me-auto"
-    [data]="task().desc"
-  ></markdown>
+  <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink>
+        Editor <i class="fa-regular fa-pen-to-square"></i>
+      </button>
+      <ng-template ngbNavContent>
+        <textarea
+          class="d-block w-75 rounded mt-2 ms-auto me-auto"
+          style="height: 300px; resize: none"
+          [(ngModel)]="task().desc"
+        ></textarea>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink>Preview <i class="fa-solid fa-eye"></i></button>
+      <ng-template ngbNavContent>
+        <markdown
+          class="d-block w-75 rounded mt-2 ms-auto me-auto"
+          [data]="task().desc"
+        ></markdown>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2 pb-2"></div>
   @if (task().checklist.length == 0) {
     <div class="col-auto mt-3 ms-auto rounded text-center">
       <button class="unstyled-button w-100" (click)="addChecklistItem()">
@@ -48,9 +61,10 @@
       </button>
     </div>
   } @else {
+    <h5 class="ms-3"><i class="fa-regular fa-square-check"></i> Checklist</h5>
     @for (check of task().checklist; track check) {
       <div
-        class="text-black text-center d-flex align-items-center justify-content-center pb-1"
+        class="text-black text-center d-flex align-items-center justify-content-start pb-1 ms-4"
       >
         <input
           type="checkbox"
@@ -78,23 +92,20 @@
             <i class="fa-regular fa-pen-to-square"></i>
           </button>
         }
+        <button
+          class="unstyled-button ms-1"
+          (click)="removeChecklistItem(check)"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
     }
-    <div class="text-black-50 text-center add-item-text">
-      <button class="unstyled-button" (click)="addChecklistItem()">
+    <div class="text-black-50 pb-2">
+      <button class="ms-5 unstyled-button" (click)="addChecklistItem()">
         <i class="fa-solid fa-plus"></i> Add item...
       </button>
     </div>
   }
-  <button
-    type="button"
-    class="btn btn-outline-primary ms-2 mb-2"
-    (click)="collapse.toggle()"
-    [attr.aria-expanded]="!isCollapsed"
-    aria-controls="collapseExample"
-  >
-    Edit
-  </button>
   <button
     type="button"
     class="btn btn-outline-primary ms-2 mb-2"

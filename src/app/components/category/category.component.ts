@@ -38,6 +38,6 @@ export class CategoryComponent {
   }
 
   deleteTask(task: Task) {
-    console.log('deleting task');
+    this.tasks = this.tasks.filter((t) => t !== task);
   }
 }
