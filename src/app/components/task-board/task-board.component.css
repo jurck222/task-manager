@@ -1,0 +1,18 @@
+.sidebar {
+    float: left;
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    color: #807d7d;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+    width: 100%; /* Make h2 width same as sidebar */
+}
